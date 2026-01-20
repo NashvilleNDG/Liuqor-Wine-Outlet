@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Static website for Liquor & Wine Outlet - Murfreesboro",
   "scripts": {
-    "build": "echo 'Static site - no build needed'",
+    "build": "",
     "deploy": "echo 'Deploy to Render'"
   },
   "keywords": [
