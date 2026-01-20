@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const contactResetButton = document.getElementById('contact-reset-button');
   
   if (contactForm) {
-    // Set reply-to field from email input
+    // Update reply-to field from email input
     const emailInput = contactForm.querySelector('input[name="email"]');
     const replyToField = contactForm.querySelector('input[name="_replyto"]');
     
@@ -349,20 +349,43 @@ document.addEventListener('DOMContentLoaded', function() {
       submitText.textContent = 'Sending...';
       submitIcon.style.display = 'none';
 
-      // Simulate form submission (replace with actual API call)
+      // Submit to Formspree
       try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const formData = new FormData(contactForm);
         
-        // Hide form, show success message
-        contactForm.style.display = 'none';
-        contactSuccessMessage.style.display = 'block';
+        // Set reply-to from email field
+        const emailValue = formData.get('email');
+        if (emailValue) {
+          formData.set('_replyto', emailValue);
+        }
         
-        // Reset form for next use
-        contactForm.reset();
+        // Submit to Formspree
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          // Hide form, show success message
+          contactForm.style.display = 'none';
+          contactSuccessMessage.style.display = 'block';
+          
+          // Reset form for next use
+          contactForm.reset();
+        } else {
+          const data = await response.json();
+          if (data.errors) {
+            throw new Error(data.errors.map(err => err.message).join(', '));
+          }
+          throw new Error('Form submission failed');
+        }
       } catch (error) {
-        // Handle error (you can add error handling here)
-        alert('Something went wrong. Please try again.');
+        // Handle error
+        console.error('Form submission error:', error);
+        alert('Something went wrong. Please try again or call us at (615) 624-6928.');
         submitButton.disabled = false;
         submitText.textContent = 'Send Message';
         submitIcon.style.display = 'block';
