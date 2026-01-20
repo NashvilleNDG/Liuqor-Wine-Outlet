@@ -2,8 +2,8 @@ services:
   - type: web
     name: liquor-wine-outlet
     env: static
-    buildCommand: echo "No build needed for static site"
-    staticPublishPath: ./dist
+    buildCommand: ""
+    staticPublishPath: dist
     headers:
       - path: /*
         name: X-Content-Type-Options
