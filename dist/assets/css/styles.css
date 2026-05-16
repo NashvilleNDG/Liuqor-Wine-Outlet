@@ -1662,7 +1662,7 @@ footer {
 /* SECTION 1: Hero Section */
 .about-hero {
   position: relative;
-  background-image: url('/assets/images/about-hero-image.png');
+  background-image: url('/assets/images/about-hero-image.webp');
   background-size: cover;
   background-position: center;
   min-height: 60vh;

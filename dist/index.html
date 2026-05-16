@@ -52,6 +52,13 @@
 
   <link rel="icon" type="image/jpeg" href="/assets/images/logo.jpg">
   <link rel="apple-touch-icon" href="/assets/images/logo.jpg">
+
+  <!-- LCP image preload (hero background) -->
+  <link rel="preload" as="image" href="/assets/images/hero-store-exterior.webp" fetchpriority="high">
+
+  <!-- Preconnect to image CDNs used on this page -->
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -117,13 +124,7 @@
       {"@type": "City", "name": "Rockvale"},
       {"@type": "AdministrativeArea", "name": "Rutherford County, TN"}
     ],
-    "makesOffer": [
-      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Fine Wines"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Premium Spirits, Whiskey & Bourbon"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Craft Beer & Imports"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Fine Cigars"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "THC Products"}}
-    ]
+    "keywords": "liquor store Murfreesboro, wine store, fine wines, premium spirits, whiskey, bourbon, craft beer, cigars, THC products, alcohol delivery"
   }
   </script>
 
@@ -448,7 +449,7 @@
             </div>
           </div>
           <div class="home-category-card">
-            <div class="home-category-bg-image" style="background-image: url('/assets/images/cigar.png');"></div>
+            <div class="home-category-bg-image" style="background-image: url('/assets/images/cigar.webp');"></div>
             <div class="home-category-overlay"></div>
             <div class="home-category-gradient"></div>
             <div class="home-category-content">
@@ -466,7 +467,7 @@
             </div>
           </div>
           <div class="home-category-card">
-            <div class="home-category-bg-image" style="background-image: url('/assets/images/thc-images.png');"></div>
+            <div class="home-category-bg-image" style="background-image: url('/assets/images/thc-images.webp');"></div>
             <div class="home-category-overlay"></div>
             <div class="home-category-gradient"></div>
             <div class="home-category-content">
@@ -640,7 +641,7 @@
           <div class="home-store-info-image-wrapper">
             <div class="home-store-info-image-decoration"></div>
             <div class="home-store-info-image-container">
-              <img src="/assets/images/Whiskey.png" alt="Premium whiskey - Johnnie Walker Black Label" class="home-store-info-image" loading="lazy">
+              <img src="/assets/images/Whiskey.webp" alt="Premium Johnnie Walker Black Label whiskey at Liquor & Wine Outlet, Murfreesboro TN" class="home-store-info-image" loading="lazy" width="1400" height="1451">
               <div class="home-store-info-image-overlay"></div>
             </div>
           </div>
@@ -919,7 +920,7 @@
     </section>
   </main>
 
-  <p style="text-align:center;color:#666;font-size:0.75rem;padding:1rem 1.5rem;background:#0a0a0a;margin:0;font-family:'Montserrat',sans-serif;">
+  <p style="text-align:center;color:#a8a8a8;font-size:0.75rem;padding:1rem 1.5rem;background:#0a0a0a;margin:0;font-family:'Montserrat',sans-serif;">
     Page last updated: May 2026 · Information verified by the Liquor &amp; Wine Outlet team · 2003 SE Broad Street, Murfreesboro, TN 37130 · (615) 624-6928
   </p>
 
