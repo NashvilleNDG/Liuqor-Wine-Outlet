@@ -61,7 +61,12 @@
   <link rel="dns-prefetch" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts: non-blocking load (preload + media swap) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"></noscript>
+
   <link rel="stylesheet" href="/assets/css/styles.css">
   
   <!-- Structured Data: LocalBusiness (LiquorStore) -->
@@ -641,7 +646,7 @@
           <div class="home-store-info-image-wrapper">
             <div class="home-store-info-image-decoration"></div>
             <div class="home-store-info-image-container">
-              <img src="/assets/images/Whiskey.webp" alt="Premium Johnnie Walker Black Label whiskey at Liquor & Wine Outlet, Murfreesboro TN" class="home-store-info-image" loading="lazy" width="1400" height="1451">
+              <img src="/assets/images/Whiskey.webp" alt="Premium Johnnie Walker Black Label whiskey at Liquor & Wine Outlet, Murfreesboro TN" class="home-store-info-image" loading="lazy" decoding="async" fetchpriority="low" width="1400" height="1451">
               <div class="home-store-info-image-overlay"></div>
             </div>
           </div>
@@ -920,10 +925,6 @@
     </section>
   </main>
 
-  <p style="text-align:center;color:#a8a8a8;font-size:0.75rem;padding:1rem 1.5rem;background:#0a0a0a;margin:0;font-family:'Montserrat',sans-serif;">
-    Page last updated: May 2026 · Information verified by the Liquor &amp; Wine Outlet team · 2003 SE Broad Street, Murfreesboro, TN 37130 · (615) 624-6928
-  </p>
-
   <footer>
     <div class="footer-bg-overlay footer-bg-dots"></div>
     <div class="footer-bg-overlay footer-bg-gradient"></div>
@@ -931,7 +932,7 @@
       <div class="footer-grid">
         <div class="footer-section footer-branding">
           <div class="footer-logo-wrapper">
-            <img src="/assets/images/logo.jpg" alt="Liquor & Wine Outlet logo — Murfreesboro, TN liquor store" class="footer-logo" loading="lazy" width="40" height="40">
+            <img src="/assets/images/logo.jpg" alt="Liquor & Wine Outlet logo — Murfreesboro, TN liquor store" class="footer-logo" loading="lazy" decoding="async" width="40" height="40">
             <div class="footer-brand">
               <span class="footer-brand-name">Liquor & Wine</span>
               <span class="footer-brand-outlet">OUTLET</span>
@@ -1027,6 +1028,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
