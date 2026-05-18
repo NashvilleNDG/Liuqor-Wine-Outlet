@@ -564,4 +564,43 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize FAQ
   initFAQ();
+
+  // Lazy-load iframes (Google Maps) via IntersectionObserver.
+  // Iframes with a data-src attribute are loaded only when scrolled into view
+  // (or shortly after page load on browsers without IO support). This keeps
+  // heavy 3rd-party scripts (Maps JS ~250KB) off the critical path.
+  function lazyLoadIframes() {
+    const iframes = document.querySelectorAll('iframe[data-src]');
+    if (!iframes.length) return;
+
+    const load = (iframe) => {
+      if (iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+        iframe.removeAttribute('data-src');
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            load(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '400px 0px' });
+
+      iframes.forEach(iframe => observer.observe(iframe));
+    } else {
+      // Fallback: load all deferred iframes 2s after page is interactive
+      setTimeout(() => iframes.forEach(load), 2000);
+    }
+  }
+
+  // Run after window load so iframe fetch never competes with LCP
+  if (document.readyState === 'complete') {
+    lazyLoadIframes();
+  } else {
+    window.addEventListener('load', lazyLoadIframes);
+  }
 });
